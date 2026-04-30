@@ -462,3 +462,20 @@ Q: Why Python?
 A: It is simple and handles expressions automatically.
 
 ---
+
+## Requirement: Looping Control Statement// Extra features
+
+Implemented WHILE loop using keyword:
+
+যতক্ষণ (while)
+
+Example:
+যতক্ষণ x < 5 তাহলে
+    দেখাও x;
+শেষ
+
+Converted to Python:
+while x < 5:
+    print(x)
+
+A flag (insideLoop) is used to manage indentation.
