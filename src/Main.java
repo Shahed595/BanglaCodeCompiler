@@ -1,12 +1,13 @@
 import java.io.*;
 import java.util.*;
 
+
 public class Main {
 
     // Symbol table stores variable name and data type
     // Example: x -> number, name -> text
     static HashMap<String, String> symbolTable = new HashMap<>();
-
+    static boolean insideIf = false;
     public static void main(String[] args) {
         try {
             BufferedReader reader = new BufferedReader(new FileReader("examples/test.bc"));
@@ -67,20 +68,40 @@ public class Main {
                     symbolTable.put(variableName, "text");
                     writer.write(variableName + " = " + value);
                     writer.newLine();
+                } 
+                // IF condition support
+
+
+  else if (line.startsWith("যদি")) {
+                    String condition = line.replaceFirst("যদি", "")
+                            .replace("তাহলে", "")
+                            .trim();
+
+                    writer.write("if " + condition + ":");
+                    writer.newLine();
+
+                    insideIf = true;
                 }
+
+                else if (line.startsWith("শেষ")) {
+                    insideIf = false;
+                }
+
                 // Print statement
-// Example: দেখাও x;
-else if (line.startsWith("দেখাও")) {
-    String value = line.replaceFirst("দেখাও", "").replace(";", "").trim();
+                // Example: দেখাও x;
+                 else if (line.startsWith("দেখাও")) {
+                    String value = line.replaceFirst("দেখাও", "").replace(";", "").trim();
 
-    if (!symbolTable.containsKey(value) && !value.matches("[0-9a-zA-Z_\\s+\\-*/()]+")) {
-        System.out.println("Error at line " + lineNumber + ": Variable not defined");
-        continue;
-    }
+                    if (insideIf) {
+                        writer.write("    print(" + value + ")");
+                    } else {
+                        writer.write("print(" + value + ")");
+                    }
 
-    writer.write("print(" + value + ")");
-    writer.newLine();
-}
+                    writer.newLine();
+                }
+                
+
 
                 else {
                     System.out.println("Syntax Error at line " + lineNumber + ": Unknown statement");
