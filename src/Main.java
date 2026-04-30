@@ -8,6 +8,7 @@ public class Main {
     // Example: x -> number, name -> text
     static HashMap<String, String> symbolTable = new HashMap<>();
     static boolean insideIf = false;
+    static boolean insideLoop = false;
     public static void main(String[] args) {
         try {
             BufferedReader reader = new BufferedReader(new FileReader("examples/test.bc"));
@@ -97,8 +98,20 @@ public class Main {
                 }
 
                 else if (line.startsWith("শেষ")) {
-                    insideIf = false;
-                }
+    insideIf = false;
+    insideLoop = false;
+}
+
+                else if (line.startsWith("যতক্ষণ")) {
+    String condition = line.replaceFirst("যতক্ষণ", "")
+            .replace("তাহলে", "")
+            .trim();
+
+    writer.write("while " + condition + ":");
+    writer.newLine();
+
+    insideLoop = true;
+}
 
                 // Print statement
                 else if (line.startsWith("দেখাও")) {
@@ -111,11 +124,11 @@ public class Main {
                         continue;
                     }
 
-                    if (insideIf) {
-                        writer.write("    print(" + value + ")");
-                    } else {
-                        writer.write("print(" + value + ")");
-                    }
+                    if (insideIf || insideLoop) {
+    writer.write("    print(" + value + ")");
+} else {
+    writer.write("print(" + value + ")");
+}
 
                     writer.newLine();
                 }
