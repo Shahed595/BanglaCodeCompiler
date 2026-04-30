@@ -12,6 +12,11 @@ public class Main {
         try {
             BufferedReader reader = new BufferedReader(new FileReader("examples/test.bc"));
             BufferedWriter writer = new BufferedWriter(new FileWriter("output/output.py"));
+            writer.write("# Generated Python Code");
+            writer.newLine();
+            writer.write("# BanglaCode Compiler Output");
+            writer.newLine();
+            writer.newLine();
 
             String line;
             int lineNumber = 0;
@@ -123,7 +128,7 @@ public class Main {
             reader.close();
             writer.close();
 
-            System.out.println("Requirement 1 completed: Two data types with type checking.");
+            System.out.println("Compilation successful!");
 
         } catch (Exception e) {
             System.out.println("Compiler Error: " + e.getMessage());

@@ -391,3 +391,74 @@ Q: Why continue after error?
 A: To detect multiple errors in one run.
 
 ---
+
+---
+
+## Requirement 6: Code Generation
+
+### Objective
+To generate executable target code from Bangla source program.
+
+---
+
+### Output Language
+
+Python was used as the target language.
+
+---
+
+### Output File
+
+output/output.py
+
+---
+
+### Example
+
+BanglaCode:
+
+সংখ্যা x = 10;
+দেখাও x;
+
+Generated Python:
+
+x = 10
+print(x)
+
+---
+
+### How It Works
+
+- Compiler reads Bangla code
+- Converts each statement
+- Writes equivalent Python code
+- Saves into output file
+
+---
+
+### Why Python?
+
+- Simple syntax
+- Easy to generate code
+- Automatically handles expressions
+
+---
+
+### Key Concept
+
+Compiler translates source code into another language.
+
+---
+
+### Viva Questions & Answers
+
+Q: What is code generation?  
+A: It is the process of converting source code into another executable form.
+
+Q: What is your target language?  
+A: Python.
+
+Q: Why Python?  
+A: It is simple and handles expressions automatically.
+
+---
