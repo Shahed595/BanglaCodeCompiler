@@ -168,19 +168,19 @@ Pattern used:
 [0-9a-zA-Z_\\s+\\-*/()]+
 
 ---
-// Print statement
-// Example: দেখাও x;
-else if (line.startsWith("দেখাও")) {
-    String value = line.replaceFirst("দেখাও", "").replace(";", "").trim();
+### Print Statement Support
 
-    if (!symbolTable.containsKey(value) && !value.matches("[0-9a-zA-Z_\\s+\\-*/()]+")) {
-        System.out.println("Error at line " + lineNumber + ": Variable not defined");
-        continue;
-    }
+The compiler supports the print statement using the keyword:
 
-    writer.write("print(" + value + ")");
-    writer.newLine();
-}
+দেখাও
+
+Example:
+
+দেখাও total;
+
+Converted to:
+
+print(total)
 
 
 ### Viva Questions & Answers
@@ -193,5 +193,71 @@ A: Python automatically follows correct operator precedence.
 
 Q: Why use regex here?  
 A: To allow valid arithmetic expressions.
+
+---
+
+---
+
+## Requirement 3: Assignment Statements
+
+### Objective
+To support assignment statements where values are stored inside variables.
+
+---
+
+### Example
+
+BanglaCode:
+
+সংখ্যা x = 10;
+লেখা name = "Shahed";
+
+Python output:
+
+x = 10
+name = "Shahed"
+
+---
+
+### How Assignment Works
+
+The compiler reads a line and checks for the assignment operator:
+
+=
+
+Then it splits the statement into two parts:
+
+1. Variable name
+2. Assigned value
+
+Example:
+
+সংখ্যা x = 10;
+
+Variable name: x  
+Value: 10  
+
+---
+
+### Code Logic
+
+The compiler uses:
+
+split("=", 2)
+
+This separates the left side and right side of the assignment.
+
+---
+
+### Viva Questions & Answers
+
+Q: What is an assignment statement?  
+A: It stores a value inside a variable.
+
+Q: Which symbol is used for assignment?  
+A: The equal sign (=).
+
+Q: How does your compiler process assignment?  
+A: It splits the statement using =, then stores the variable name and value.
 
 ---
