@@ -168,6 +168,20 @@ Pattern used:
 [0-9a-zA-Z_\\s+\\-*/()]+
 
 ---
+// Print statement
+// Example: দেখাও x;
+else if (line.startsWith("দেখাও")) {
+    String value = line.replaceFirst("দেখাও", "").replace(";", "").trim();
+
+    if (!symbolTable.containsKey(value) && !value.matches("[0-9a-zA-Z_\\s+\\-*/()]+")) {
+        System.out.println("Error at line " + lineNumber + ": Variable not defined");
+        continue;
+    }
+
+    writer.write("print(" + value + ")");
+    writer.newLine();
+}
+
 
 ### Viva Questions & Answers
 
