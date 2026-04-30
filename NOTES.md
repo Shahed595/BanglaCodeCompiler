@@ -103,3 +103,81 @@ Q: Why is type checking important?
 A: It prevents errors and ensures correct program execution.
 
 ---
+
+
+---
+
+## Requirement 2: Arithmetic Operations with Precedence
+
+### Objective
+To support arithmetic expressions with correct operator precedence.
+
+---
+
+### Supported Operators
+
++ → addition  
+- → subtraction  
+* → multiplication  
+/ → division  
+
+---
+
+### Example
+
+Input (BanglaCode):
+
+সংখ্যা x = 10;
+সংখ্যা y = 20;
+সংখ্যা total = x + y * 2;
+
+Output (Python):
+
+total = x + y * 2
+
+---
+
+### Operator Precedence
+
+Multiplication (*) has higher priority than addition (+)
+
+Example:
+
+x + y * 2 = 10 + (20 * 2) = 50
+
+---
+
+### How It Works
+
+The compiler does NOT evaluate expressions.
+
+It directly sends the expression to Python.
+
+Python handles precedence automatically.
+
+---
+
+### Code Logic
+
+The regex was updated to allow:
+
+numbers, variables, operators, brackets
+
+Pattern used:
+
+[0-9a-zA-Z_\\s+\\-*/()]+
+
+---
+
+### Viva Questions & Answers
+
+Q: Does your compiler evaluate expressions?  
+A: No, it forwards the expression to Python which evaluates it.
+
+Q: How is precedence handled?  
+A: Python automatically follows correct operator precedence.
+
+Q: Why use regex here?  
+A: To allow valid arithmetic expressions.
+
+---

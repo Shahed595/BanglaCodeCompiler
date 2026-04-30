@@ -35,7 +35,7 @@ public class Main {
                     String variableName = parts[0].trim();
                     String value = parts[1].trim();
 
-                    if (!value.matches("[0-9]+")) {
+                    if (!value.matches("[0-9a-zA-Z_\\s+\\-*/()]+")) {
                         System.out.println("Type Error at line " + lineNumber + ": সংখ্যা must contain a number");
                         continue;
                     }
@@ -68,6 +68,19 @@ public class Main {
                     writer.write(variableName + " = " + value);
                     writer.newLine();
                 }
+                // Print statement
+// Example: দেখাও x;
+else if (line.startsWith("দেখাও")) {
+    String value = line.replaceFirst("দেখাও", "").replace(";", "").trim();
+
+    if (!symbolTable.containsKey(value) && !value.matches("[0-9a-zA-Z_\\s+\\-*/()]+")) {
+        System.out.println("Error at line " + lineNumber + ": Variable not defined");
+        continue;
+    }
+
+    writer.write("print(" + value + ")");
+    writer.newLine();
+}
 
                 else {
                     System.out.println("Syntax Error at line " + lineNumber + ": Unknown statement");
