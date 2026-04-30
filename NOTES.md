@@ -261,3 +261,65 @@ Q: How does your compiler process assignment?
 A: It splits the statement using =, then stores the variable name and value.
 
 ---
+
+---
+
+## Requirement 4: IF Condition
+
+### Objective
+To support conditional execution using IF statements.
+
+---
+
+### Syntax
+
+যদি condition তাহলে  
+statements  
+শেষ  
+
+---
+
+### Example
+
+যদি total > 30 তাহলে  
+দেখাও total;  
+শেষ  
+
+---
+
+### Python Output
+
+if total > 30:
+    print(total)
+
+---
+
+### How It Works
+
+- The compiler detects "যদি"
+- Extracts condition
+- Converts it to Python "if"
+- Adds ":" at the end
+- Uses indentation for inside block
+
+---
+
+### Key Concept
+
+Python uses indentation instead of {}  
+So spaces are added for nested statements.
+
+---
+
+### Viva Questions & Answers
+
+Q: How does your IF work?  
+A: It converts Bangla condition into Python if statement.
+
+Q: Why indentation is needed?  
+A: Python uses indentation to define blocks.
+
+Q: What does "শেষ" do?  
+A: It ends the IF block.
+
+---
