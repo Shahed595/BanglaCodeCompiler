@@ -22,6 +22,14 @@ public class Main {
 
                 if (line.isEmpty()) continue;
 
+                //SEMICOLON CHECK
+                if (!line.endsWith(";") && 
+                    !line.startsWith("যদি") && 
+                    !line.equals("শেষ")) {
+
+                    System.out.println("Syntax Error at line " + lineNumber + ": Missing semicolon");
+                    continue;
+                }
                 // Data type 1: Number
                 // Example: সংখ্যা x = 10;
                 if (line.startsWith("সংখ্যা")) {
@@ -88,9 +96,15 @@ public class Main {
                 }
 
                 // Print statement
-                // Example: দেখাও x;
-                 else if (line.startsWith("দেখাও")) {
+                else if (line.startsWith("দেখাও")) {
                     String value = line.replaceFirst("দেখাও", "").replace(";", "").trim();
+
+                    if (!symbolTable.containsKey(value) &&
+                        !value.matches("[0-9a-zA-Z_\\s+\\-*/()]+")) {
+
+                        System.out.println("Error at line " + lineNumber + ": Variable not defined");
+                        continue;
+                    }
 
                     if (insideIf) {
                         writer.write("    print(" + value + ")");
@@ -100,8 +114,6 @@ public class Main {
 
                     writer.newLine();
                 }
-                
-
 
                 else {
                     System.out.println("Syntax Error at line " + lineNumber + ": Unknown statement");

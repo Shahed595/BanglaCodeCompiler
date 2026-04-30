@@ -323,3 +323,71 @@ Q: What does "শেষ" do?
 A: It ends the IF block.
 
 ---
+
+---
+
+## Requirement 5: Syntax Error Handling
+
+### Objective
+To detect errors in source code and prevent incorrect execution.
+
+---
+
+### Types of Errors Handled
+
+1. Missing semicolon  
+2. Unknown statement  
+3. Type mismatch  
+4. Undefined variable  
+
+---
+
+### Example Errors
+
+Missing semicolon:
+
+সংখ্যা x = 10
+
+Output:
+
+Syntax Error at line 1: Missing semicolon
+
+---
+
+Undefined variable:
+
+দেখাও z;
+
+Output:
+
+Error: Variable not defined
+
+---
+
+### How It Works
+
+- Each line is checked before processing  
+- If error found, message is printed  
+- Compiler continues to next line  
+
+---
+
+### Key Concept
+
+Compiler should not crash on errors  
+It should recover and continue execution  
+
+---
+
+### Viva Questions & Answers
+
+Q: What is syntax error?  
+A: A mistake in program structure or format.
+
+Q: How does your compiler handle errors?  
+A: It prints error message and continues execution.
+
+Q: Why continue after error?  
+A: To detect multiple errors in one run.
+
+---
